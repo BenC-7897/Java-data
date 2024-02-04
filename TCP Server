@@ -1,0 +1,31 @@
+// Importing necessary classes for input/output operations and networking
+import java.io.*; 
+import java.net.*; 
+import java.io.IOException; 
+public class echo_server {
+	public static void main (String args[]) {
+		try { // Try block: Attempt to execute the following code
+			ServerSocket NewSocket = new ServerSocket(9008); // Create a ServerSocket on port 9008
+			System.out.println("Waiting for TCP Server to connect: "); // Print a message indicating that the server is waiting for a TCP client to connect
+			while (true) { // Infinite loop to continuously listen for client connections
+				Socket NewClient = NewSocket.accept(); // Accept a connection from a client, blocking until a connection is made
+				System.out.println("Client connected: "); // Print a message indicating that a client is connected
+				BufferedReader Reader = new BufferedReader(new InputStreamReader(NewClient.getInputStream())); // Create BufferedReader to read input from the client 
+				PrintWriter Writer = new PrintWriter(NewClient.getOutputStream(), true); // Create PrintWriter to send output to the client
+				String Message; 
+        // Read input from the client and echo it back
+				while ((Message = Reader.readLine()) != null) { 
+					System.out.println("Received " + Message); 
+					Writer.println("Server Echo:" + Message); 
+				}
+        // Close the BufferedReader, PrintWriter, and the socket connected to the client
+				Reader.close(); 
+				Writer.close(); 
+				NewClient.close(); 
+				} }
+			catch (IOException e) { // Catch block: If an IOException occurs during the execution of the try block
+				e.printStackTrace(); // catch the exception, print the stack trace, and handle it
+			}
+	}
+}
+
