@@ -12,8 +12,8 @@ System.out.println("Client server closed"); // Print a message indicating that t
 newSocket.close(); // Close the server socket
 System.out.println("Server socket closed"); // Print a message indicating that the server socket is closed
 }
-catch (Exception e) { // Catch block: If an exception occurs during the execution of the try block,
-e.printStackTrace(); // catch the exception, print the stack trace, and handle it
+catch (Exception e) { // Catch block: If an exception occurs during the execution of the try block
+e.printStackTrace(); // catch the exception, print the stack trace and handle it
 }
 }
 }
