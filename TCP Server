@@ -13,18 +13,18 @@ public class echo_server {
 				BufferedReader Reader = new BufferedReader(new InputStreamReader(NewClient.getInputStream())); // Create BufferedReader to read input from the client 
 				PrintWriter Writer = new PrintWriter(NewClient.getOutputStream(), true); // Create PrintWriter to send output to the client
 				String Message; 
-        // Read input from the client and echo it back
+                                // Read input from the client and echo it back
 				while ((Message = Reader.readLine()) != null) { 
 					System.out.println("Received " + Message); 
 					Writer.println("Server Echo:" + Message); 
 				}
-        // Close the BufferedReader, PrintWriter, and the socket connected to the client
+                                // Close the BufferedReader, PrintWriter and the socket connected to the client
 				Reader.close(); 
 				Writer.close(); 
 				NewClient.close(); 
 				} }
 			catch (IOException e) { // Catch block: If an IOException occurs during the execution of the try block
-				e.printStackTrace(); // catch the exception, print the stack trace, and handle it
+				e.printStackTrace(); // catch the exception, print the stack trace and handle it
 			}
 	}
 }
